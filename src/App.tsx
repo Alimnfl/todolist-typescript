@@ -25,6 +25,7 @@ function App() {
   ]);
 
   const [searchText, setSearchText] = useState('');
+  const [toggleMode, setToggleMode] = useState(false);
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('ts-react-todos-data') || 'null');
@@ -57,10 +58,10 @@ function App() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-slate-100">
-      <div className="p-5 border border-red-600 w-[1300px] h-[700px] ">
-        <Header />
-        <Search setSearchText={setSearchText} />
+    <div className={` flex items-center justify-center w-full h-screen ${toggleMode ? 'bg-black ' : ''} `}>
+      <div className="p-5 w-[1300px] h-[700px] ">
+        <Header handleToggleMode={setToggleMode} />
+        <Search handleSearchText={setSearchText} />
         <TodosList todos={todos.filter((todo) => todo.text.toLowerCase().includes(searchText.toLowerCase()))} handleAddTodo={addTodo} handleDeleteTodo={deleteTodos} />
       </div>
     </div>
