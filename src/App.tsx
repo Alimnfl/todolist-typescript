@@ -17,6 +17,11 @@ function App() {
       text: 'This is my first todo!',
       date: '3/18/2023',
     },
+    {
+      id: nanoid(),
+      text: 'Go to the gym!',
+      date: '3/18/2023',
+    },
   ]);
 
   const [searchText, setSearchText] = useState('');
