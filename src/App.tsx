@@ -10,7 +10,7 @@ interface Todo {
   date: string;
 }
 
-function App() {
+function App(): JSX.Element {
   const [todos, setTodos] = useState<Todo[]>([
     {
       id: nanoid(),
@@ -39,7 +39,7 @@ function App() {
     localStorage.setItem('ts-react-todos-data', JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (text: string) => {
+  const addTodo = (text: string): void => {
     // Untuk add Todo List
     const date = new Date();
     const newTodo = {
@@ -47,11 +47,11 @@ function App() {
       text: text,
       date: date.toLocaleDateString(),
     };
-    const newTodos = [...todos, newTodo];
+    const newTodos: Todo[] = [...todos, newTodo];
     setTodos(newTodos);
   };
 
-  const deleteTodos = (id: string) => {
+  const deleteTodos = (id: string): void => {
     // Untuk delete Todo List
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
