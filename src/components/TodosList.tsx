@@ -19,7 +19,7 @@ interface TodoProps {
 
 function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
   return (
-    <div className="w-full grid grid-cols-3 gap-[30px]">
+    <div data-test="todo-list" className="w-full grid grid-cols-3 md:grid-cols-2 gap-[30px] ">
       {todos.map((todo) => (
         <Todo id={todo.id} text={todo.text} date={todo.date} handleDeleteTodo={handleDeleteTodo} />
       ))}

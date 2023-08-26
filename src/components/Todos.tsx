@@ -13,10 +13,14 @@ function Todo({ id, text, date, handleDeleteTodo }: TodoProps) {
   };
   return (
     <div className="flex flex-col drop-shadow-md justify-between mt-6 p-4 w-[400px] border h-[200px] bg-yellow-200 rounded-xl">
-      <span className="text-xs">{text}</span>
+      <span data-test="text-data" className="text-xs">
+        {text}
+      </span>
       <div className="flex flex-row items-center justify-between">
-        <p className="">{date}</p>
-        <FaTrashAlt onClick={onDeleteClick} className="cursor-pointer" />
+        <p data-test="date-data" className="">
+          {date}
+        </p>
+        <FaTrashAlt data-test="delete-data" onClick={onDeleteClick} className="cursor-pointer" />
       </div>
     </div>
   );
