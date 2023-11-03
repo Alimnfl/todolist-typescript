@@ -6,21 +6,20 @@ import TodosList from './components/TodosList';
 
 interface Todo {
   id: string;
-  text: string;
-  date: string;
+  title: string;
+  body: string;
+  archived: boolean;
+  createdAt: string;
 }
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([
     {
       id: nanoid(),
-      text: 'This is my first todo!',
-      date: '3/18/2023',
-    },
-    {
-      id: nanoid(),
-      text: 'Go to the gym!',
-      date: '3/18/2023',
+      title: 'First todo',
+      body: 'I want to make good person',
+      archived: false,
+      createdAt: '3/18/2023',
     },
   ]);
 
@@ -39,30 +38,30 @@ function App() {
     localStorage.setItem('ts-react-todos-data', JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (text: string) => {
-    // Untuk add Todo List
+  const addTodo = (title: string, body: string, boolean: boolean) => {
     const date = new Date();
     const newTodo = {
       id: nanoid(),
-      text: text,
-      date: date.toLocaleDateString(),
+      title: title,
+      body: body,
+      archived: boolean,
+      createdAt: date.toLocaleDateString(),
     };
     const newTodos = [...todos, newTodo];
     setTodos(newTodos);
   };
 
   const deleteTodos = (id: string) => {
-    // Untuk delete Todo List
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
 
   return (
-    <div className={` flex items-center justify-center w-full h-screen ${toggleMode ? 'bg-black ' : ''} `}>
+    <div className={` flex flex-col items-center justify-center w-full h-screen ${toggleMode ? 'bg-black ' : ''} `}>
       <div className="p-5 w-[1300px] h-[700px] ">
         <Header handleToggleMode={setToggleMode} />
         <Search handleSearchText={setSearchText} />
-        <TodosList todos={todos.filter((todo) => todo.text.toLowerCase().includes(searchText.toLowerCase()))} handleAddTodo={addTodo} handleDeleteTodo={deleteTodos} />
+        <TodosList todos={todos.filter((todo) => todo.title.toLowerCase().includes(searchText.toLowerCase()))} handleAddTodo={addTodo} handleDeleteTodo={deleteTodos} />
       </div>
     </div>
   );
