@@ -24,7 +24,7 @@ function App(): JSX.Element {
   ]);
 
   const [searchText, setSearchText] = useState('');
-  const [toggleMode, setToggleMode] = useState(false);
+  const [toggleMode, setToggleMode] = useState<boolean>(false);
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('ts-react-todos-data') || 'null');

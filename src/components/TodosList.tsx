@@ -19,7 +19,7 @@ interface TodoProps {
 function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
   const [archivedTodos, setArchivedTodos] = useState<Todo[]>([]);
 
-  const handleArchiveClick = (todoId: string) => {
+  const handleArchiveClick = (todoId: string | number) => {
     const todoIndex = todos.findIndex((todo) => todo.id === todoId);
     if (todoIndex !== -1) {
       const todoArchive = { ...todos[todoIndex] };
