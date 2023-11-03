@@ -5,14 +5,14 @@ import Search from './components/Search';
 import TodosList from './components/TodosList';
 
 interface Todo {
-  id: string;
+  id: string | number;
   title: string;
   body: string;
   archived: boolean;
   createdAt: string;
 }
 
-function App() {
+function App(): JSX.Element {
   const [todos, setTodos] = useState<Todo[]>([
     {
       id: nanoid(),
@@ -47,11 +47,12 @@ function App() {
       archived: boolean,
       createdAt: date.toLocaleDateString(),
     };
-    const newTodos = [...todos, newTodo];
+    const newTodos: Todo[] = [...todos, newTodo];
     setTodos(newTodos);
   };
 
-  const deleteTodos = (id: string) => {
+  const deleteTodos = (id: string | number): void => {
+    // Untuk delete Todo List
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };

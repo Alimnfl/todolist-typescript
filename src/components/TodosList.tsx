@@ -3,7 +3,7 @@ import AddTodos from './AddTodos';
 import Todo from './Todos';
 
 interface Todo {
-  id: string;
+  id: string | number;
   title: string;
   body: string;
   archived: boolean;
@@ -12,7 +12,7 @@ interface Todo {
 
 interface TodoProps {
   todos: Todo[];
-  handleDeleteTodo: (deleteTodo: string) => void;
+  handleDeleteTodo: (deleteTodo: string | number) => void;
   handleAddTodo: (title: string, body: string, boolean: boolean) => void;
 }
 
@@ -33,7 +33,7 @@ function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
     }
   };
 
-  const handleDeleteArchivedTodo = (todoId: string) => {
+  const handleDeleteArchivedTodo = (todoId: string | number) => {
     const archivedTodoIndex = archivedTodos.findIndex((todo) => todo.id === todoId);
     if (archivedTodoIndex !== -1) {
       const updatedArchivedTodos = [...archivedTodos];

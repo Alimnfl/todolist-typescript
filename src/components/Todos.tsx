@@ -1,13 +1,13 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
 interface TodoProps {
-  id: string;
+  id: string | number;
   title: string;
   body: string;
   archived: boolean;
   createdAt: string;
-  handleDeleteTodo: (id: string) => void;
-  handleArchiveClick: (id: string) => void;
+  handleDeleteTodo: (id: string | number) => void;
+  handleArchiveClick: (id: string | number) => void;
 }
 
 function Todo({ id, body, title, archived, createdAt, handleDeleteTodo, handleArchiveClick }: TodoProps) {
