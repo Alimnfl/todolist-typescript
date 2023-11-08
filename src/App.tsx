@@ -24,7 +24,7 @@ function App(): JSX.Element {
   ]);
 
   const [searchText, setSearchText] = useState('');
-  const [toggleMode, setToggleMode] = useState<boolean>(false);
+  const [toggleMode, setToggleMode] = useState(false);
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('ts-react-todos-data') || 'null');
@@ -52,7 +52,6 @@ function App(): JSX.Element {
   };
 
   const deleteTodos = (id: string | number): void => {
-    // Untuk delete Todo List
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
