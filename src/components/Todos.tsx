@@ -26,7 +26,7 @@ function Todo({ id, body, title, archived, createdAt, handleDeleteTodo, handleAr
       <div className="flex flex-row items-center justify-between">
         <p className="">{createdAt}</p>
         {!archived ? (
-          <button className="font-semibold" onClick={onArchiveClick}>
+          <button className="px-4 font-semibold bg-yellow-400 border border-yellow-500 rounded-md w-fit" onClick={onArchiveClick}>
             Archive
           </button>
         ) : null}

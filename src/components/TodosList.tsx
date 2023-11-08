@@ -56,7 +56,7 @@ function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
         <h1 className="text-lg font-semibold">Archive</h1>
         <div className="w-full grid grid-cols-3 gap-[30px]">
           {archivedTodos.map((todo) => (
-            <Todo id={todo.id} title={todo.title} body={todo.body} archived={false} createdAt={todo.createdAt} handleDeleteTodo={handleDeleteArchivedTodo} handleArchiveClick={() => handleArchiveClick(todo.id)} />
+            <Todo id={todo.id} title={todo.title} body={todo.body} archived={true} createdAt={todo.createdAt} handleDeleteTodo={handleDeleteArchivedTodo} handleArchiveClick={() => handleArchiveClick(todo.id)} />
           ))}
         </div>
       </div>
