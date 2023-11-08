@@ -59,9 +59,9 @@ function App(): JSX.Element {
   return (
     <div className={` flex flex-col items-center justify-center w-full h-screen ${toggleMode ? 'bg-black ' : ''} `}>
       <div className="p-5 w-[1300px] h-[700px] ">
-        <Header handleToggleMode={setToggleMode} />
-        <Search handleSearchText={setSearchText} />
-        <TodosList todos={todos.filter((todo) => todo.title.toLowerCase().includes(searchText.toLowerCase()))} handleAddTodo={addTodo} handleDeleteTodo={deleteTodos} />
+        <Header handleToggleMode={setToggleMode} toggleMode={toggleMode} />
+        <Search handleSearchText={setSearchText} toggleMode={toggleMode} />
+        <TodosList toggleMode={toggleMode} todos={todos.filter((todo) => todo.title.toLowerCase().includes(searchText.toLowerCase()))} handleAddTodo={addTodo} handleDeleteTodo={deleteTodos} />
       </div>
     </div>
   );
