@@ -14,9 +14,10 @@ interface TodoProps {
   todos: Todo[];
   handleDeleteTodo: (deleteTodo: string | number) => void;
   handleAddTodo: (title: string, body: string, boolean: boolean) => void;
+  toggleMode: boolean;
 }
 
-function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
+function TodosList({ todos, handleDeleteTodo, handleAddTodo, toggleMode }: TodoProps) {
   const [archivedTodos, setArchivedTodos] = useState<Todo[]>([]);
 
   const handleArchiveClick = (todoId: string | number) => {
@@ -44,7 +45,7 @@ function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
   return (
     <div className="flex flex-col py-4">
       <div className="flex flex-col">
-        <h1 className="text-lg font-semibold">Todo List</h1>
+        <h1 className={`text-lg font-semibold ${toggleMode ? 'text-white' : 'text-black'}`}>Todo List</h1>
         <div className="w-full grid grid-cols-3 gap-[30px]">
           {todos.map((todo) => (
             <Todo id={todo.id} title={todo.title} body={todo.body} archived={false} createdAt={todo.createdAt} handleDeleteTodo={handleDeleteTodo} handleArchiveClick={() => handleArchiveClick(todo.id)} />
@@ -53,7 +54,7 @@ function TodosList({ todos, handleDeleteTodo, handleAddTodo }: TodoProps) {
         </div>
       </div>
       <div className="pt-4">
-        <h1 className="text-lg font-semibold">Archive</h1>
+        <h1 className={`text-lg font-semibold ${toggleMode ? 'text-white' : 'text-black'}`}>Archive</h1>
         <div className="w-full grid grid-cols-3 gap-[30px]">
           {archivedTodos.map((todo) => (
             <Todo id={todo.id} title={todo.title} body={todo.body} archived={true} createdAt={todo.createdAt} handleDeleteTodo={handleDeleteArchivedTodo} handleArchiveClick={() => handleArchiveClick(todo.id)} />
